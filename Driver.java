@@ -1,6 +1,7 @@
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Driver {
@@ -11,11 +12,9 @@ public class Driver {
 
         //variables de setteo
         boolean run = true;
-
-        String menu = "Aerolinea XD"+"\n"+
-        "1. Crear ususario\n" + 
-        "2. iniciar sesion"+"\n"+
-        "3. Salir";
+        ArrayList<String> sentence = new ArrayList<>();
+        String menu = "=== Translator/Traductor ===\n"+
+        "Ingresa una oracion en ingles y traduciremos todo lo que podamos.";
 
         Scanner scanner = new Scanner(System.in);
 
@@ -40,11 +39,28 @@ public class Driver {
 
         System.out.println(tree);
         tree.getRoot().traverseInOrder();
+
         while(run == true){
+
+            String outputString = "";
             System.out.println(menu);
-            System.out.println("Ingrese una opcion: ");
+            System.out.println("Ingrese tu oracion: ");
             String opcion = scanner.nextLine();
-        
+            String[] input = opcion.split(" ");
+
+            for (int i = 0; i < input.length; i++) {
+                if (tree.get(input[i]) == null){
+                    sentence.add("*"+input[i]+"*");
+                }
+                else {
+                    sentence.add(tree.get(input[i]));
+                }
+            }
+
+            for (int i = 0; i < sentence.size(); i++) {
+                outputString = outputString + sentence.get(i);
+            }
+            
         }
         
 
