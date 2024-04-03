@@ -1,3 +1,9 @@
+/** Algoritmos y Estructuras de datos -  seccion 30
+ * Luis Francisco Padilla Juárez - 23663
+ * HT7, BST
+ * 02-04-2024
+ */
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -10,7 +16,7 @@ public class Driver {
         UVGBST<String> tree = new UVGBST<>();
 
         String menu = "=== Translator/Traductor ===\n" +
-                "Ingresa una oracion en ingles y traduciremos todo lo que podamos.";
+                "Ingresa una oracion en ingles y traduciremos todo lo que podamos.\n";
 
         Scanner scanner = new Scanner(System.in);
 
@@ -28,20 +34,19 @@ public class Driver {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-        // Print tree content
         System.out.println("Contenido del árbol:");
         tree.getRoot().traverseInOrder();
 
-        while (true) { // Infinite loop, you may want to add an exit condition
+        while (true) { 
             String outputString = "";
             System.out.println(menu);
             System.out.println("Ingrese tu oracion: ");
             String opcion = scanner.nextLine();
+            opcion = opcion.toLowerCase();
             String[] input = opcion.split(" ");
 
             for (String word : input) {
-                Association<String, String> translatedWord = tree.get(word);
+                String translatedWord = tree.get(word);
                 if (translatedWord == null) {
                     outputString += "*" + word + "* ";
                 } else {
@@ -49,7 +54,7 @@ public class Driver {
                 }
             }
 
-            // Print the translated sentence
+            // imprimir traduccion
             System.out.println("Oración traducida:");
             System.out.println(outputString);
         }

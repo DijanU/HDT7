@@ -1,18 +1,24 @@
+/** Algoritmos y Estructuras de datos -  seccion 30
+ * Luis Francisco Padilla Juárez - 23663
+ * HT7, BST
+ * 02-04-2024
+ */
+
 public class UVGBST<E extends Comparable<E>> {
 
     public class Node<E extends Comparable<E>>{
         public E value;
-        public E translatedValue; // New attribute for translated value
+        public E translatedValue; 
         public Node leftChild = null;
         public Node rightChild = null;
         public Node parent = null;
         
-        public Node(E cValue, E cTranslatedValue) { // Constructor with two attributes
+        public Node(E cValue, E cTranslatedValue) { 
             this.value = cValue;
             this.translatedValue = cTranslatedValue;
         }
 
-        public Node(E cValue, E cTranslatedValue, Node<E> parent) { // Constructor with two attributes and parent node
+        public Node(E cValue, E cTranslatedValue, Node<E> parent) { 
             this.value = cValue;
             this.translatedValue = cTranslatedValue;
             this.parent = parent;
@@ -33,9 +39,9 @@ public class UVGBST<E extends Comparable<E>> {
                 }
             }
             if (compCase == 0) {
-                // Update the value
+                // 
                 value = newVal;
-                translatedValue = newTranslatedVal; // Update the translated value
+                translatedValue = newTranslatedVal; 
                 return this;
             }
             if (rightChild == null) {
@@ -74,7 +80,7 @@ public class UVGBST<E extends Comparable<E>> {
             } else if (this.value.compareTo(key) < 0 && this.rightChild != null) {
                 return this.rightChild.getNode(key);
             } else {
-                return null; // Key not found
+                return null; 
             }
         }
 
@@ -114,12 +120,12 @@ public class UVGBST<E extends Comparable<E>> {
         return this.root.nodeHeight();
     }
 
-    public Association<String, String> get(E key) {
+    public String get(E key) {
         Node<E> node = this.root.getNode(key);
         if (node != null) {
-            return new Association<>(node.value.toString(), node.translatedValue.toString());
+            return node.translatedValue.toString();
         } else {
-            return null; // Key not found
+            return null; // no existe palabra
         }
     }
 
